@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "windows": {
+        "options": {
+            "shell": {
+                "executable": "cmd.exe",
+                "args": ["/d", "/c"]
+            }
+        }
+    },
+    "tasks": [
+        {
+            "type": "cmake",
+            "label": "CMake: clean rebuild",
+            "command": "cleanRebuild",
+            "targets": [
+                "all"
+            ],
+            "preset": "${command:cmake.activeBuildPresetName}",
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "CMake template clean rebuild task"
+        },
+        {
+            "label": "OpenOCD: Flash project",
+            "type": "shell",
+            "command": "${workspaceFolder}\\flash.bat",
+            "args": [
+                "${command:cmake.launchTargetPath}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "Build + Flash (OpenOCD)",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "CMake: clean rebuild",
+                "OpenOCD: Flash project"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}
