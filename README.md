@@ -4,7 +4,7 @@
 
 ## 在已生成并编辑的工程中添加外设教程:
 - 在CubeMX中新生成一个工程,添加对应的外设
-- 将新工程的`Src`和`Inc`目录下的对应外设文件(例: `adc.c` `adc.h` 拷贝到现有工程的 `Core/Src` 和 `Core/Inc` 中
+- 将新工程的`Src`和`Inc`目录下的对应外设文件(例: `adc.c` `adc.h` )拷贝到现有工程的 `Core/Src` 和 `Core/Inc` 中
 - 在 `cmake/stm32cubemx/CMakeLists.txt` 中添加对应外设的源文件:
     ```cmake
     set(MX_Application_Src  # 对应Core/Src目录中的源文件
